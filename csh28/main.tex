@@ -1,0 +1,1039 @@
+% \documentclass[dvipdfmx, a4paper, 11pt]{jsarticle}%A４用紙縦、明朝（デフォルト）１１ポイント
+\documentclass[dvipdfmx,titlepage, 11pt, a4paper]{jsarticle}%A４用紙縦、明朝（デフォルト）１１ポイント
+\usepackage[top=18truemm,bottom=18truemm,left=18truemm,right=18truemm]{geometry}%余白調整
+% \setlength{\textheight}{45\baselineskip}
+% \setlength{\textwidth}{46zw}% ４６文字/行
+
+\usepackage{template}
+
+%%%====================================================================================================================================
+\renewcommand{\thesection}{第\arabic{section}問}
+\renewcommand{\thesubsection}{\thesection}
+\titleformat*{\section}{\LARGE\mcfamily}%章のタイトルの文字の大きさを通常サイズに設定（明朝体で）
+\titlespacing*{\section}{0pt}{*0}{0pt}%章番号の後の空白行の削除
+\titleformat*{\subsection}{\Large\mcfamily}%節のタイトルの文字の大きさを通常サイズに設定（明朝体で）
+\titlespacing*{\subsection}{0pt}{*0}{0pt}%節番号の後の空白行の削除
+\titleformat*{\subsubsection}{\large\mcfamily}%小節のタイトルの文字の大きさを通常サイズに設定（明朝体で）
+\titlespacing*{\subsubsection}{0pt}{*0}{0pt}%小節番号の後の空白行の削除
+
+\makeatletter
+%章番号付きコード番号
+\AtBeginDocument{
+  \renewcommand*{\thelstlisting}{\arabic{section}.\arabic{lstlisting}}%
+  \@addtoreset{lstlisting}{section}
+}
+
+%章番号付き表番号
+\renewcommand{\thetable}{%
+    \arabic{section}.\arabic{table}%
+}
+\@addtoreset{table}{section}%
+
+%章番号付き図番号
+\renewcommand{\thefigure}{%
+	\arabic{section}.\arabic{figure}%
+}%
+\@addtoreset{figure}{section}%
+
+%章番号付き式番号
+\renewcommand{\theequation}{%
+	\arabic{section}.\arabic{equation}%
+}%
+\@addtoreset{equation}{section}%
+
+\renewcommand{\p@enumiii}{}% 箇条書きの参照時の番号の変更(2(親の番号)a(子の番号)→aだけに)
+\renewcommand{\p@enumii}{}% 箇条書きの参照時の番号の変更(2a→aだけに)
+\makeatother
+%%%====================================================================================================================================
+
+%%%====================================================================================================================================
+%%ページのレイアウト設定
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{}{\thesection\ #1}}%                   %\rightmarkにセクション名を格納
+\renewcommand{\subsectionmark}[1]{\markboth{#1}{\rightmark}}%   %\leftmarkにサブセクション名を格納
+%[]は省略可で省略すると{}で指定された内容が偶数ページ奇数のどちらにも適用される。
+% \renewcommand{\headrulewidth}{0pt} %ヘッダの罫線を消す 
+\fancyfoot{}%                        %clear all footer fields
+\lhead{\leftmark}%                   %左側ヘッダの定義[<偶数ページ>]{<奇数ページ>}
+\chead{}%                            %中央ヘッダの定義[<偶数ページ>]{<奇数ページ>}
+\rhead{\rightmark}%                  %右側ヘッダの定義[<偶数ページ>]{<奇数ページ>}
+\lfoot{東工大数学h29年度}%       %左側フッターの定義[<偶数ページ>]{<奇数ページ>}
+\cfoot{\thepage}%                    %中央フッターの定義[<偶数ページ>]{<奇数ページ>}
+\rfoot{文殊の知恵}%                  %右側フッターの定義[<偶数ページ>]{<奇数ページ>}
+\renewcommand{\headrulewidth}{0.1pt}%%ヘッダの線の太さ 
+\renewcommand{\footrulewidth}{0.1pt}%%フッターの線の太さ
+%%%====================================================================================================================================
+
+\makeindex%索引用
+
+\renewcommand{\refname}{}%参考文献の文字を非表示にする
+\title{\Huge 東工大数学h29年度\\[10mm]}
+\author{{\LARGE 文殊の知恵}\\[1mm]\LARGE \CID{8705}橋那弥}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents % 目次
+\pagenumbering{roman}%目次のページ番号のスタイルをローマ数字にする
+\newpage
+\setcounter{tocdepth}{3}%章節の深さを3にするsubsubsectionまで
+\pagenumbering{arabic}%他のページ番号は通常の数字にする。
+\section{}%第1問
+\subsection{問題文}
+\begin{enumerate}[(1)]
+  \item template
+\end{enumerate}
+\newpage
+\subsection{解答}
+\begin{enumerate}[(1)]
+  \item 
+  \begin{eqnarray*}
+    \spaligndelims\vert\vert \spalignmat[c]{
+      1 1 0 1;
+      1 x 1 2;
+      1 3 2 3;
+      1 x^2 5 0
+    } &=&
+    \spaligndelims\vert\vert \spalignmat[c]{
+      1 1 0 1;
+      0 {x - 1} 1 1;
+      0 2 2 2;
+      0 {x^2 - 1} 5 {-1}
+    }\\
+    &=& (-1)^{1 + 1}\cdot 1
+    \spaligndelims\vert\vert \spalignmat[c]{
+      {x - 1} 1 1;
+      2 2 2;
+      {x^2 - 1} 5 {-1}
+    }\\
+    &=&
+    \spaligndelims\vert\vert \spalignmat[c]{
+      {x - 1} 1 1;
+      {4 - 2x} 0 0;
+      {x^2 + x - 2} 6 0
+    }\\
+    &=&(-1)^{1+3}\cdot 1
+    \spaligndelims\vert\vert \spalignmat[c]{
+      {4 - 2x} 0 ;
+      {x^2 + x - 2} 6
+    }\\
+    &=& 12(2 - x)\\
+    \therefore x = 2
+  \end{eqnarray*}
+  \item 
+  \begin{enumerate}[(a)]
+    \item 
+    固有値$\lambda$を求める。
+    \begin{eqnarray*}
+      &&\spaligndelims\vert\vert \spalignmat[c]{
+        A - \lambda I
+      } = 0\\
+      &\Longleftrightarrow&
+      \spaligndelims\vert\vert \spalignmat[c]{
+        {2 - \lambda} {2};
+        {2} {5 - \lambda}
+      } = 0\\
+      &\Longleftrightarrow&
+      4 - (2 - \lambda)(5 - \lambda) = 0\\
+      &\Longleftrightarrow&
+      -\lambda^2 + 7\lambda - 10 + 4 = 0\\
+      &\Longleftrightarrow&
+      (\lambda - 6)(\lambda - 1) = 0\\
+      &&\therefore \lambda = 6, 1
+    \end{eqnarray*}
+    固有ベクトル空間を求める。
+    \begin{eqnarray*}
+      W(6;A) &=& \left\{\mathbold{v}|A\mathbold{v} = 6\mathbold{v}\right\}\\
+      &=& \left\{\mathbold{v}|\mathbold{v} = \spalignmat[c]{
+        {s};
+        {2s}
+      }\right\}\\
+      W(1;A) &=& \left\{\mathbold{v}|A\mathbold{v} = \mathbold{v}\right\}\\
+      &=& \left\{\mathbold{v}|\mathbold{v} = \spalignmat[c]{
+        {-2t};
+        {t}
+      }\right\}
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      よって、\mathbold{v_1} = \spalignmat[c]{
+        {1};
+        {2}
+        }, 
+        \mathbold{v_2} = \spalignmat[c]{
+          {-2};
+          {1}
+          }は独立なベクトルであるので、\mathbb{R}^2における基底となる。
+          これより、正規直交基底ベクトル\mathbold{u_1}, \mathbold{u_2}を求めると、
+    \end{eqnarray*}
+    \begin{eqnarray*}
+          \mathbold{u_1} &=& \frac{1}{|\mathbold{v_1}|}\mathbold{v_1} = \frac{1}{\sqrt{5}}\spalignmat[c]{
+            {1};
+            {2}
+          }\\
+          \mathbold{u_2}' &=& \mathbold{v_2} - \sum_{i = 1}^{1}(\mathbold{v_2}\cdot\mathbold{u_i})\mathbold{u_i}
+          = \spalignmat[c]{
+            {-2};
+            {1}
+          }\\
+          \therefore \mathbold{u_2} &=& \frac{1}{|\mathbold{u_2}'|}\mathbold{u_2}'= \frac{1}{\sqrt{5}}\spalignmat[c]{
+            {-2};
+            {1}
+          }
+    \end{eqnarray*}
+    よって、これらは$A$の固有ベクトルであり、正規直交基底となっているため、これらを並べた行列は$A$を対角かする正規直交行列$U$となる。
+    \begin{equation*}
+      U = \spalignmat[c]{
+        {\mathbold{u_1}} {\mathbold{u_2}}
+      } = \frac{1}{\sqrt{5}}\spalignmat[c]{
+        {1} {-2};
+        {2} {1}
+      }
+    \end{equation*}
+    \item (a)より、$A$を対角化すると以下のようになり、$D$を以下のように定義する。
+    \begin{equation*}
+      U^{-1}AU = U^{\top}AU = \spalignmat[c]{
+        {6} {0};
+        {0} {1}
+        } = D
+    \end{equation*}
+    よって、以下が成り立つ
+    \begin{eqnarray*}
+      D^n &=& U^{\top}A^{n}U\\
+      A^{n} &=& UD^{n}U^{\top}\\
+      A^n &=& \frac{1}{5}
+      \spalignmat[c]{
+        {1} {-2};
+        {2} {1}
+      }\spalignmat[c]{
+        {6^n} {0};
+        {0} {1}
+      }\spalignmat[c]{
+        {1} {2};
+        {-2} {1}
+      }\\
+      A^n &=& \frac{1}{5}\spalignmat[c]{
+        {6^n + 4} {2\cdot 6^n - 2};
+        {2\cdot 6^n - 2} {4\cdot 6^n + 1}
+      }
+    \end{eqnarray*}
+  \end{enumerate}
+  \item 
+  \begin{enumerate}[(a)]
+    \item 点$P_0$を含む任意の平面の法線ベクトルを$\mathbold{n} = \spalignmat[c]{
+      {a};
+      {b};
+      {c}
+    }$とおくと、求める方程式は以下のようになる。\\
+    この平面上にある任意の点$P(x, y, z)$を考えると、点$P_0$から点$P$へのベクトル$\mathbold{q} = \spalignmat[c]{
+      {x - x_0};
+      {y - y_0};
+      {z - z_0}
+    }$は法線ベクトルと直交する。よって、以下のようになる。
+    \begin{eqnarray*}
+      \mathbold{q}\cdot\mathbold{n} &=& 0\\
+      a(x - x_0) + b(y - y_0) + c(z - z_0) &=& 0 \;\;(Eq.1)
+    \end{eqnarray*}
+    \item 方程式Eq.1が点$Q(x_1, y_1, z_1)$を含むとき方程式に代入して、以下のような式となる。
+    \begin{eqnarray*}
+      a(x_1 - x_0) + b(y_1 - y_0) + c(z_1 - z_0) &=& 0      
+    \end{eqnarray*}
+    \item 方程式Eq.1が題意の直線と平行であるとき、以下が成り立つ。\\
+    実数定数$t$を用いて、直線の方程式から以下が成り立つ。
+    \begin{eqnarray*}
+      &&\begin{cases}
+        \frac{x - x_1}{u} = t\\
+        \frac{y - y_1}{v} = t\\
+        \frac{z - z_1}{w} = t\\
+      \end{cases}\\
+      &\Longleftrightarrow&
+      \begin{cases}
+        x - x_1 = ut\\
+        y - y_1 = vt\\
+        z - z_1 = wt\\
+      \end{cases}\\
+      &\Longleftrightarrow&
+      \spalignmat[c]{
+        {x - x_1};
+        {y - y_1};
+        {z - z_1}
+      } = t
+      \spalignmat[c]{
+        {u};
+        {v};
+        {w}
+      }
+    \end{eqnarray*}
+    よって、この直線は方向ベクトル$\mathbold{p} = 
+          \spalignmat[c]{
+            {u};
+            {v};
+            {w}
+          }$で表される直線である。\\
+    従って、平行であるときは法線ベクトルと方向ベクトルが直交するときであるので、以下が成り立つ。
+    \begin{eqnarray*}
+      \mathbold{n}\cdot\mathbold{p} &=& 0\\
+      au + bv + cw &=& 0
+    \end{eqnarray*}
+    よって、平面と直線が平行であることを表す式は以下のようになる。
+    \begin{equation*}
+      au + bv + cw = 0
+    \end{equation*}
+    \item 題意の式から以下が成り立つ。
+    \begin{eqnarray}
+      &&\spaligndelims\vert\vert \spalignmat[c]{
+        {x - x_0} {y - y_0} {z - z_0};
+        {x_1 - x_0} {y_1 - y_0} {z_1 - z_0};
+        u v w
+      } = 0 \nonumber\\
+      &\Longleftrightarrow&
+      (x - x_0)
+      \spaligndelims\vert\vert \spalignmat[c]{
+        {y_1 - y_0} {z_1 - z_0};
+        v w
+      }
+      - (y - y_0)
+      \spaligndelims\vert\vert \spalignmat[c]{
+        {x_1 - x_0} {z_1 - z_0};
+        u w
+      }
+      + (z - z_0)
+      \spaligndelims\vert\vert \spalignmat[c]{
+        {x_1 - x_0} {y_1 - y_0};
+        u v
+      }
+      = 0\nonumber\\
+      &\Longleftrightarrow&
+      (x - x_0)\{(y_1 - y_0)w - (z_1 - z_0)v\}
+      - (y - y_0)\{(x_1 - x_0)w - (z_1 - z_0)u\}\nonumber\\ 
+      &&+ (z - z_0)\{(x_1 - x_0)v - (y_1 - y_0)u\}
+      = 0\label{pro1:sub3:eq1}
+    \end{eqnarray}
+    求める方程式は方程式Eq.1を満たし、上記の条件と点$Q(x_1, y_1, z_1)$を含むことを満たすため、
+    (a), (b), (c)より以下が成り立つ。\\
+    \begin{eqnarray}
+      au + bv + cw &=& 0 \label{pro1:sub3:subd:eq1}\\
+      a(x - x_0) + b(y - y_0) + c(z - z_0) &=& 0 \;\; (Eq.1)\nonumber\\
+      a(x_1 - x_0) + b(y_1 - y_0) + c(z_1 - z_0) &=& 0 \label{pro1:sub3:subd:eq2}
+    \end{eqnarray}
+    また、題意より、$u, v, w \neq 0$である。これと\eqref{pro1:sub3:subd:eq1}より、以下が成り立つ。
+    \begin{equation*}
+      \begin{cases}
+        a = -\frac{bv + cw}{u}\\
+        b = -\frac{au + cw}{v}\\
+      \end{cases}
+    \end{equation*}
+    よって、これと、\eqref{pro1:sub3:subd:eq2}より、以下が成り立つ。
+    \begin{eqnarray*}
+      &&\begin{cases}
+        -\frac{bv + cw}{u}(x_1 - x_0) + b(y_1 - y_0) + c(z_1 - z_0) = 0\\
+        a(x_1 - x_0) - \frac{au + cw}{v}(y_1 - y_0) + c(z_1 - z_0) = 0\\
+      \end{cases}\\
+      &\Longleftrightarrow&
+      \begin{cases}
+        -bv(x_1 - x_0) + bu(y_1 - y_0) -cw(x_1 - x_0) + cu(z_1 - z_0) = 0\\
+        av(x_1 - x_0) - au(y_1 - y_0) -cw(y_1 - y_0) + cv(z_1 - z_0) = 0\\
+      \end{cases}\\
+      &\Longleftrightarrow&
+      \begin{cases}
+        b\{u(y_1 - y_0) - v(x_1 - x_0)\} = c\{w(x_1 - x_0) - u(z_1 - z_0)\}\\
+        a\{v(x_1 - x_0) - u(y_1 - y_0)\} = c\{w(y_1 - y_0) - v(z_1 - z_0)\}\\
+      \end{cases}
+    \end{eqnarray*}
+    よって、$s = v(x_1 - x_0) - u(y_1 - y_0)$とおくと以下が成り立つ。
+    \begin{eqnarray*}
+      \begin{cases}
+        bs = -c\{w(x_1 - x_0) - u(z_1 - z_0)\}\\
+        as = c\{w(y_1 - y_0) - v(z_1 - z_0)\}\\
+      \end{cases}
+    \end{eqnarray*}
+    よって、方程式Eq.1より以下が成り立つ。
+    \begin{eqnarray*}
+      &&as(x - x_0) + bs(y - y_0) + cs(z - z_0) = 0\\
+      &\Longleftrightarrow&
+      c\{w(y_1 - y_0) - v(z_1 - z_0)\}(x - x_0) - c\{w(x_1 - x_0) - u(z_1 - z_0)\}(y - y_0) + cs(z - z_0) = 0\\
+      &\Longleftrightarrow&
+      \{w(y_1 - y_0) - v(z_1 - z_0)\}(x - x_0) - \{w(x_1 - x_0) - u(z_1 - z_0)\}(y - y_0) + s(z - z_0) = 0\\
+      &\Longleftrightarrow&
+      \{w(y_1 - y_0) - v(z_1 - z_0)\}(x - x_0) + \{u(z_1 - z_0) - w(x_1 - x_0)\}(y - y_0) + \{v(x_1 - x_0) - u(y_1 - y_0)\}(z - z_0) = 0\\
+    \end{eqnarray*}
+    よって、これは式\eqref{pro1:sub3:eq1}と一致する。
+    従って、題意は示された。
+  \end{enumerate}
+  \item 題意の式より以下が成り立つ。
+  \begin{eqnarray*}
+    Q(\mathbold{x}) &=& \sum_{i = 1}^{n}\sum_{j = 1}^{n}h_{ij}x_{i}x_{j}
+    = \mathbold{x}^{\top}H\mathbold{x}\\
+    \mathbold{x}^{\top}\mathbold{x} &=& \sum_{i = 1}^{n}x_{i}{}^2 = 1
+  \end{eqnarray*}
+  ここで$H$の固有値を$\lambda_{i}\;\;(1 \leq i \leq n)$とおくと、それに対応する固有ベクトル$\mathbold{v_i}$が存在し、以下が成り立つ。
+  \begin{eqnarray*}
+    H\mathbold{v_i} = \lambda_{i}\mathbold{v_i}
+  \end{eqnarray*}
+  よって、この時、$\mathbold{v_i}$はそれぞれ独立であり、$\mathbb{R}$の基底となる。よって、これの正規直交基底も存在し、それらもまた$H$の固有ベクトルとなる。
+  その正規直交ベクトルを$\mathbold{u_i}$とおき、それらを並べた行列を$U$とおくと以下が成り立つ。
+  \begin{eqnarray*}
+    U = \spalignmat[c]{
+      {\mathbold{u_1}} {\mathbold{u_2}} {\cdots} {\mathbold{u_n}}
+    }
+  \end{eqnarray*}
+  よって、この時$U$は$H$を対角化する直交行列となるので以下が成り立つ。
+  \begin{eqnarray*}
+    U^{-1}HU = U^{\top}HU = D = \spalignmat[c]{
+      {\lambda_1} {0} {\cdots} {0};
+      {0} {\lambda_2} {\cdots} {0};
+      {\vdots} {\vdots} {\ddots} {\vdots};
+      {0} {0} {\cdots} {\lambda_n}
+    }
+  \end{eqnarray*}
+  よって、$\mathbold{x} = U\mathbold{y}$とおくと、以下が成り立つ。
+  \begin{eqnarray*}
+    \mathbold{x}^{\top}\mathbold{x} &=& \mathbold{y}^{\top}U^{\top}U\mathbold{y} = \mathbold{y}^{\top}\mathbold{y} = 1\\
+    Q(\mathbold{x}) &=& \left(U\mathbold{y}\right)^{\top}H\left(U\mathbold{y}\right) = \mathbold{y}^{\top}U^{\top}HU\mathbold{y} 
+    = \mathbold{y}^{\top}D\mathbold{y}\\
+    &=& \frac{\mathbold{y}^{\top}D\mathbold{y}}{\mathbold{y}^{\top}\mathbold{y}} = \frac{\sum_{i = 1}^{n}\lambda_{i}y_{i}^2}{\sum_{i = 1}^{n}y_{i}^2}
+  \end{eqnarray*}
+  よって、加重平均より、この式の最大値は$\lambda_{i}$の最大値すなわち固有値の最大値と一致することが示された。
+\end{enumerate}
+\newpage
+\section{}
+\subsection{問題文}
+\newpage
+\subsection{解答}
+\begin{enumerate}[(1)]
+  \item $A_1$の状態遷移関数は以下のようになる。
+  \begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|cc}
+      \hline
+      $\delta$ & $0$ & $1$\\
+      \hline
+      $q_0$ & $q_0$ & $q_1$\\
+      $q_1$ & $q_0$ & $q_1$\\
+      \hline
+    \end{tabular}
+  \end{table}
+  \item $A_1$の終了状態を$F=\{q_0\}$から$F=\{q_1\}$に変えればいい。
+  \item $A_2$の入力記号$\Sigma$と状態集合と初期状態は$Q_2 = \{r_0, r_1, r_2\}, q_{init} = r_0$と与えられているため、状態遷移関数と終了状態を定義する。
+  状態をそれぞれ$3$で割ったあまりで分けるとし、$r_i$を余り$i\;\;(1\leq i \leq 2)$とおくと以下のように遷移できる。
+  \begin{itemize}
+    \item [$r_0$] 
+    \begin{itemize}
+      \item[$0$] 
+      $2$倍を意味するので、その値は余り$0$のままより状態は変化しない。
+      \item[$1$] 
+      $2$倍して$1$を足すことを意味するので、$2(3k) + 1 = 3\cdot 2k + 1$よりあまり$1$より状態$r_1$へ。
+    \end{itemize}
+    \item [$r_1$] 
+    \begin{itemize}
+      \item[$0$] 
+      $2$倍を意味する。$2(3k + 1) = 3\cdot 2k + 2$より余り$2$よって、状態$r_2$へ。
+      \item[$1$] 
+      $2$倍して$1$を足すことを意味するので、$2(3k + 1) + 1 = 3(2k + 1)$より余り$0$より状態$r_0$へ。
+    \end{itemize}
+    \item [$r_2$] 
+    \begin{itemize}
+      \item[$0$] 
+      $2$倍を意味する。$2(3k + 2) = 3(2k + 1) + 1$より余り$1$よって、状態$r_1$へ。
+      \item[$1$] 
+      $2$倍して$1$を足すことを意味するので、$2(3k + 2) + 1 = 3(2k + 1) + 2$より余り$2$より状態$r_2$へ。
+    \end{itemize}
+  \end{itemize}
+  よって状態遷移表は以下のようになる。
+  \begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|cc}
+      \hline
+      $\delta$ & $0$ & $1$\\
+      \hline
+      $r_0$ & $r_0$ & $r_1$\\
+      $r_1$ & $r_2$ & $r_0$\\
+      $r_2$ & $r_1$ & $r_2$\\
+      \hline
+    \end{tabular}
+  \end{table}
+  終了状態は$F_2 = {r_0}$
+  \item $A_1$と$A_2$の積を取ると以下のように$A_3$は定義できる。
+  状態集合$Q_3$は
+  \begin{eqnarray*}
+    Q_3 &=& Q_1 \times Q_2\\
+    &=& \{(q_0, r_0), (q_0, r_1), (q_0, r_2), (q_1, r_0), (q_1, r_1), (q_1, r_2)\}
+  \end{eqnarray*}
+  初期状態は$q_{init} = (q_0, r_0)$
+  入力記号は$\Sigma$、 終了状態は$F_3 = (q_0, r_0)$
+  状態遷移関数は以下のようになる。
+  \begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|cc}
+      \hline
+      $\delta$ & $0$ & $1$\\
+      \hline
+      $(q_0, r_0)$ & $(q_0, r_0)$ & $(q_1, r_1)$\\
+      $(q_0, r_1)$ & $(q_0, r_2)$ & $(q_1, r_0)$\\
+      $(q_0, r_2)$ & $(q_0, r_1)$ & $(q_1, r_2)$\\
+      $(q_1, r_0)$ & $(q_0, r_0)$ & $(q_1, r_1)$\\
+      $(q_1, r_1)$ & $(q_0, r_2)$ & $(q_1, r_0)$\\
+      $(q_1, r_2)$ & $(q_0, r_1)$ & $(q_1, r_2)$\\
+      \hline
+    \end{tabular}
+  \end{table}
+  $A_3$の状態集合は$A_1$と$A_2$の状態集合の積集合であり、終了状態も$A_1$の終了状態かつ$A_2$の終了状
+  態となる状態を終了状態とし、状態遷移関数は$A_1$と$A_2$の状態遷移関数をそれぞれ適応したものとなっている。
+  \item $A_1$と$A_2$の和を取った非決定性オートマトン$A_4$は以下のようになる。
+  状態集合$Q_4 = Q_3$よって、初期状態$q_{init} = s_0 = (q_0, r_0)$
+  終了状態は和より$F_4 = \{q_0\}\times Q_2 \cup \{r_0\} \times Q_1 = \{(q_0, r_0), (q_0, r_1), (q_0, r_2), (q_1, r_0)\}$
+  招待遷移関数は非決定性より(4)から以下のようになる。
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{c|cc}
+      \hline
+      $\delta$ & $0$ & $1$\\
+      \hline
+      $(q_0, r_0)$ & $\{(q_0, r_0)\}$ & $\{(q_1, r_1)\}$\\
+      $(q_0, r_1)$ & $\{(q_0, r_2)\}$ & $\{(q_1, r_0)\}$\\
+      $(q_0, r_2)$ & $\{(q_0, r_1)\}$ & $\{(q_1, r_2)\}$\\
+      $(q_1, r_0)$ & $\{(q_0, r_0)\}$ & $\{(q_1, r_1)\}$\\
+      $(q_1, r_1)$ & $\{(q_0, r_2)\}$ & $\{(q_1, r_0)\}$\\
+      $(q_1, r_2)$ & $\{(q_0, r_1)\}$ & $\{(q_1, r_2)\}$\\
+      \hline
+    \end{tabular}
+  \end{table}
+  $A_3$の状態集合は$A_1$と$A_2$の状態集合の積集合であり、終了状態は$A_1$または$A_2$をみたせばいいので、どちらかの終了状態が
+  含まれる集合とし、状態遷移関数は$A_1$と$A_2$の状態遷移関数をそれぞれ適応し、適応した先は集合としている。
+  \item $A_5$は$A_4$と状態遷移関数以外は全て同じになり、状態遷移関数は$A_3$と同様になる。
+\end{enumerate}
+\newpage
+\section{}
+\subsection{問題文}
+\newpage
+\subsection{解答}
+\begin{enumerate}[(1)]
+  \item \begin{enumerate}[(a)]
+    \item 0
+    \item 以下のようになる。
+    \begin{figure}[htbp]
+      \centering
+      \begin{tikzpicture}[>=stealth]
+        \coordinate (O) at (0, 0) node [] {$f(0, 0)$};
+        \draw [->] (O)++(-170:0.5cm) -- ++(-170:3cm) node (A) [] {};
+        \node (A) at ($(O)!1.3!(A)$) {$f(0, 1)$};
+        \draw [->] (O)++(-10:0.5cm) -- ++(-10:3cm) node (B) [] {};
+        \node (B) at ($(O)!1.3!(B)$) {$f(8, 1)$};
+        \draw [->] (A)++(-45:0.5cm) -- ++(-45:1.7cm) node (C) [] {};
+        \node (C) at ($(A)!1.3!(C)$) {$f(2, 2)$};
+        \draw [->] (A)++(-135:0.5cm) -- ++(-135:1.7cm) node (D) [] {};
+        \node (D) at ($(A)!1.3!(D)$) {$f(0, 2)$};
+        \draw [->] (D)++(-135:0.5cm) -- ++(-135:1cm) node (E) [] {};
+        \node (E) at ($(D)!1.3!(E)$) {$f(0, 3)$};
+        \draw [->] (D)++(-45:0.5cm) -- ++(-45:1cm) node (F) [] {};
+        \node (F) at ($(D)!1.3!(F)$) {$f(4, 3)$};
+        \draw [->] (C)++(-45:0.5cm) -- ++(-45:1cm) node (G) [] {};
+        \node (G) at ($(C)!1.3!(G)$) {$f(6, 3)$};
+        \draw [->] (C)++(-135:0.5cm) -- ++(-135:1cm) node (H) [] {};
+        \node (H) at ($(C)!1.3!(H)$) {$f(2, 3)$};
+        \draw [->] (B)++(-45:0.5cm) -- ++(-45:1.7cm) node (I) [] {};
+        \node (I) at ($(B)!1.3!(I)$) {$f(10, 2)$};
+        \draw [->] (B)++(-135:0.5cm) -- ++(-135:1.7cm) node (J) [] {};
+        \node (J) at ($(B)!1.3!(J)$) {$f(8, 2)$};
+        \draw [->] (J)++(-45:0.5cm) -- ++(-45:1cm) node (K) [] {};
+        \node (K) at ($(J)!1.3!(K)$) {$f(12, 3)$};
+        \draw [->] (J)++(-135:0.5cm) -- ++(-135:1cm) node (L) [] {};
+        \node (L) at ($(J)!1.3!(L)$) {$f(8, 3)$};
+        \draw [->] (I)++(-45:0.5cm) -- ++(-45:1cm) node (M) [] {};
+        \node (M) at ($(I)!1.3!(M)$) {$f(14, 3)$};
+        \draw [->] (I)++(-135:0.5cm) -- ++(-135:1cm) node (N) [] {};
+        \node (N) at ($(I)!1.3!(N)$) {$f(10, 3)$};
+      \end{tikzpicture}
+    \end{figure}
+    \item $s$は$A$の部分集合$S$の総和$s = \sum_{a\in S}a$を表し、$i$は
+    部分集合$S$に次に入れるべき要素の配列番号を表す。
+  \end{enumerate}
+  \item \begin{enumerate}[(a)]
+    \item s
+    \item 以下のようになる。
+    \begin{figure}[htbp]
+      \centering
+      \begin{tikzpicture}[>=stealth]
+        \coordinate (O) at (0, 0) node [] {$f(0, 0)$};
+        \draw [->] (O)++(-135:0.5cm) -- ++(-135:1cm) node (A) [] {};
+        \node (A) at ($(O)!1.3!(A)$) {$f(0, 1)$};
+        \draw [->] (O)++(-45:0.5cm) -- ++(-45:1cm) node (B) [] {};
+        \node (B) at ($(O)!1.3!(B)$) {$f(8, 1)$};
+        \draw [->] (A)++(-45:0.5cm) -- ++(-45:1.7cm) node (C) [] {};
+        \node (C) at ($(A)!1.3!(C)$) {$f(2, 2)$};
+        \draw [->] (A)++(-135:0.5cm) -- ++(-135:1.7cm) node (D) [] {};
+        \node (D) at ($(A)!1.3!(D)$) {$f(0, 2)$};
+        \draw [->] (D)++(-135:0.5cm) -- ++(-135:1cm) node (E) [] {};
+        \node (E) at ($(D)!1.3!(E)$) {$f(0, 3)$};
+        \draw [->] (D)++(-45:0.5cm) -- ++(-45:1cm) node (F) [] {};
+        \node (F) at ($(D)!1.3!(F)$) {$f(4, 3)$};
+        \draw [->] (C)++(-45:0.5cm) -- ++(-45:1cm) node (G) [] {};
+        \node (G) at ($(C)!1.3!(G)$) {$f(6, 3)$};
+        \draw [->] (C)++(-135:0.5cm) -- ++(-135:1cm) node (H) [] {};
+        \node (H) at ($(C)!1.3!(H)$) {$f(2, 3)$};
+      \end{tikzpicture}
+    \end{figure}
+    \item 関数の呼び出し回数が減少し、実行時間が改善された。この関数内での計算は
+    部分集合の総和を計算し、要素は全て正の整数であるため、値が減少することはない。よって、
+    総和を計算していくうちに目的の数字より大きくなってしまった場合はそれ以上足しても一致することはないため、
+    その部分を省略することができるため。
+  \end{enumerate}
+  \item \begin{enumerate}[(a)]
+    \item $a_{n - 1}$\\
+    成り立つ理由は以下が成り立つためである。
+    命題$P$を$\left(\sum_{a\in T} a\right) = k$となる$A$の部分集合$T(T\subseteq A)$が存在することとおき、
+    命題$Q$を$\left(\sum_{a\in U} a\right) = k$となる$A'$の部分集合$U(U\subseteq A')$が存在するまたは、
+    $\left(\sum_{a\in V}a \right) = k - a_{n - 1}$となる$A'$の部分集合$V(V\subseteq A')$が存在することとおく。
+    この時$P\Longleftrightarrow Q$が成り立つことを示す。\\
+    $P \Rightarrow Q$を示す。\\
+    $P$より$T$について以下の場合分けが考えられる。
+    \begin{enumerate}[(i)]
+      \item $a_{n - 1} \in T$
+      \item $a_{n - 1} \notin T$
+    \end{enumerate}
+    それぞれについて$Q$が成り立つことを示す。
+    \begin{enumerate}[(i)]
+      \item $a_{n - 1} \in T, a_{n - 1} \notin A'$より$U$は存在しない。\\
+      $T' = T - \{a_{n - 1}\}$とおくと、 $T' \subseteq A'$となる。\\
+      この時、$T'$の総和は$k - a_{n - 1}$である。よって、$V=T'$は存在する。
+      \item $a_{n - 1} \notin T$より$T\subseteq A'$となる。\\
+      従って、$U = T$となる$U$は存在する。
+    \end{enumerate}
+    よって、$P\Rightarrow Q$が示された。\\
+    $Q \Rightarrow P$を示す。\\
+    $Q$より以下の場合分けが考えられる。
+    \begin{enumerate}[(i)]
+      \item $U$が存在する。
+      \item $V$が存在する。
+    \end{enumerate}
+    それぞれについて$P$が成り立つことを示す。
+    \begin{enumerate}[(i)]
+      \item $U$が存在するとき、$U\subseteq A'\subset A$より$U$は$A$の部分集合であり、
+      $(\sum_{a\in U}a) = k$より、条件を満たす。
+      \item $V$が存在するとき、$V' = V \cup \{a_{n - 1}\}$とおくと、$V \subseteq A' \subset A, a_{n - 1}\in A$より$V' \subseteq A$。
+      また、$(\sum_{a\in V}a) = k - a_{n - 1}$より、$(\sum_{a\in V'}a) = k - a_{n - 1} + a_{n - 1} = k$となる。よって、この時も条件を満たす。
+    \end{enumerate}
+    従って、$Q\Rightarrow P$も示された。\\
+    以上より、$P\Longleftrightarrow Q$が成り立つ。
+    \item \begin{enumerate}
+      \item[\maru{3}{black}] $i == 0 \;\;\&\& \;\;j == a[i]$
+      \item[\maru{4}{black}] $j$
+      \item[\maru{5}{black}] $j - a[i]$  
+    \end{enumerate}
+    \item 配列$b$の値は以下のようになる。
+    \begin{table}[htbp]
+      \centering
+      \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$\\
+        \hline
+        $0$ & $1$ & $0$ & $0$ & $0$ & $0$ & $0$ & $0$\\
+        \hline
+        $1$ & $1$ & $0$ & $1$ & $0$ & $0$ & $0$ & $0$\\
+        \hline
+        $2$ & $1$ & $0$ & $1$ & $0$ & $1$ & $0$ & $1$\\
+        \hline
+      \end{tabular}
+    \end{table}
+    \item 集合$A$における要素数$i + 1$の部分集合$A'\subseteq A$において、$(\sum_{a\in W} a) = k$
+    となる部分集合$W\subseteq A'$が存在することを意味する。
+    \item 図3.1のプログラムのオーダーは$O(2^n)$であり、図3.2のプログラムのオーダーは$O(nk)$より
+    計算時間の観点においては図3.2のほうが優れている。
+  \end{enumerate}
+\end{enumerate}
+\newpage
+\section{}
+\subsection{問題文}
+\newpage
+\subsection{解答}
+\begin{enumerate}[(1)]
+  \item \begin{enumerate}[(a)]
+    \item 
+    \begin{eqnarray*}
+      a_0 &=&\frac{1}{\pi}\dint{-\pi}{\pi}{f_1(x)}\\
+      &=& \frac{1}{\pi}\biggl[\frac{x^2}{2}\biggr]_{-\pi}^{\pi}\\
+      &=& 0
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      a_k &=&\frac{1}{\pi}\dint{-\pi}{\pi}{f_1(x)\cos kx}\\
+      &=&\frac{1}{\pi}\biggl[x\frac{\sin kx}{k}\biggr]_{-\pi}^{\pi} - \frac{1}{k\pi}\dint{-\pi}{\pi}{\sin kx}\\
+      &=&-\frac{1}{k\pi}\biggl[\frac{-\cos kx}{k}\biggr]_{-\pi}^{\pi} = 0
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      b_k &=&\frac{1}{\pi}\dint{-\pi}{\pi}{f_1(x)\sin kx}\\
+      &=&-\frac{1}{\pi}\biggl[x\frac{\cos kx}{k}\biggr]_{-\pi}^{\pi} + \frac{1}{k\pi}\dint{-\pi}{\pi}{\cos kx}\\
+      &=&\frac{1}{k\pi}\biggl[\frac{\sin kx}{k}\biggr]_{-\pi}^{\pi} - \frac{\pi}{k\pi}\{\cos(k\pi) + \cos(-k\pi)\}\\
+      &=&\frac{2\cdot (-1)^{k + 1}}{k}
+    \end{eqnarray*}
+    \item 
+    \begin{eqnarray*}
+      a_0 &=&\frac{1}{\pi}\dint{-\pi}{\pi}{f_2(x)}\\
+      &=& \frac{1}{\pi}\left\{\dint{-\pi}{-\frac{\pi}{2}}{-1} + \dint{-\frac{\pi}{2}}{\frac{\pi}{2}}{1} + 
+      \dint{\frac{\pi}{2}}{\pi}{-1}\right\}\\
+      &=& \frac{1}{\pi}\left(-\frac{\pi}{2} + \pi - \frac{\pi}{2}\right) = 0
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      a_k &=&\frac{1}{\pi}\dint{\pi}{-\pi}{f_2(x)\cos kx}\\
+      &=& \frac{1}{\pi}\left\{\dint{-\pi}{-\frac{\pi}{2}}{-\cos kx} + \dint{-\frac{\pi}{2}}{\frac{\pi}{2}}{\cos kx} + 
+      \dint{\frac{\pi}{2}}{\pi}{-\cos kx}\right\}\\
+      &=& \frac{1}{\pi}\left\{-\biggl[\frac{\sin kx}{k}\biggr]_{-\pi}^{-\frac{\pi}{2}} + \biggl[\frac{\sin kx}{k}\biggr]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}
+      - \biggl[\frac{\sin kx}{k}\biggr]_{\frac{\pi}{2}}^{\pi}\right\}\\
+      &=& \frac{1}{k\pi}\left\{\sin \left(\frac{k\pi}{2}\right) + \sin\left(\frac{k\pi}{2}\right) + \sin\left(\frac{k\pi}{2}\right) + \sin\left(\frac{k\pi}{2}\right)\right\}\\
+      &=& \frac{4\sin\left(\frac{k\pi}{2}\right)}{k\pi}
+    \end{eqnarray*}
+    \begin{eqnarray*}
+      b_k &=&\frac{1}{\pi}\dint{-\pi}{\pi}{f_2(x)\sin kx}\\
+      &=& \frac{1}{\pi}\left\{\dint{-\pi}{-\frac{\pi}{2}}{-\sin kx} + \dint{-\frac{\pi}{2}}{\frac{\pi}{2}}{\sin kx} + 
+      \dint{\frac{\pi}{2}}{\pi}{-\sin kx}\right\}\\
+      &=& \frac{1}{\pi}\left\{-\biggl[\frac{\cos kx}{k}\biggr]_{-\pi}^{-\frac{\pi}{2}} + \biggl[\frac{\cos kx}{k}\biggr]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}
+      - \biggl[\frac{\cos kx}{k}\biggr]_{\frac{\pi}{2}}^{\pi}\right\} = 0
+    \end{eqnarray*}
+    \item \begin{equation*}
+      (左辺) = \frac{1}{\pi}\dint{-\pi}{\pi}{|f(x)^2|}
+    \end{equation*}
+    ここで、
+    \begin{eqnarray*}
+      f(x)^2 &=& \frac{a_0^2}{4} + a_0\sum_{k = 1}^{\infty}(a_k\cos kx + b_k\sin kx) 
+      + \left\{\sum_{k = 1}^{\infty}(a_k\cos kx + b_k\sin kx)\right\}\left\{\sum_{l = 1}^{\infty}(a_l\cos lx + b_l\sin lx)\right\}\\
+      &=& \frac{a_0^2}{4} + a_0\sum_{k = 1}^{\infty}(a_k\cos kx + b_k\sin kx)\\
+      &&+ \sum_{k = 1}^{\infty}\sum_{l = 1}^{\infty}(a_ka_l\cos kx\cos lx + b_kb_l\sin kx\sin lx + a_kb_l\cos kx\sin lx + b_ka_l\sin kx\cos lx)
+    \end{eqnarray*}
+    よって、
+    \begin{eqnarray*}
+      (左辺) &=& \frac{a_0^2}{4\pi}\dint{-\pi}{\pi}{1} + \frac{a_0}{\pi}\sum_{k = 1}^{\infty}\dint{-\pi}{\pi}{(a_k\cos kx + b_k\sin kx)}\\
+      && + \frac{1}{\pi}\sum_{k = 1}^{\infty}\sum_{l = 1}^{\infty}\dint{-\pi}{\pi}{(a_ka_l\cos kx\cos lx + b_kb_l\sin kx\sin lx + a_kb_l\cos kx\sin lx + b_ka_l\sin kx\cos lx)}\\
+      &=& \frac{a_0^2}{2} + \frac{a_0}{\pi}\sum_{k = 1}^{\infty}I_{k} + \frac{1}{\pi}\sum_{k = 1}^{\infty}\sum_{l = 1}^{\infty}J_{kl}
+    \end{eqnarray*}
+    上記のように$I_{k}, J_{kl}$をおく。
+    この時以下のようになる。
+    \begin{eqnarray*}
+      I_{k} &=& a_k\biggl[\frac{\sin kx}{k}\biggr]_{-\pi}^{\pi} + b_k\biggl[\frac{-\cos kx}{k}\biggr]_{-\pi}^{\pi} = 0\\
+      J_{kl} &=& a_ka_l\dint{-\pi}{\pi}{\left\{\frac{\cos (k + l)x + \cos(k - l)x}{2}\right\}} - b_kb_l\dint{-\pi}{\pi}{\left\{\frac{\cos (k + l)x - \cos(k - l)x}{2}\right\}}\\
+      && + a_kb_l\dint{-\pi}{\pi}{\left\{\frac{\sin (k + l)x - \sin(k - l)x}{2}\right\}} + b_ka_l\dint{-\pi}{\pi}{\left\{\frac{\sin (k + l)x + \sin(k - l)x}{2}\right\}}
+    \end{eqnarray*}
+    \begin{enumerate}[(i)]
+      \item $k = l$の時、
+      \begin{eqnarray*}
+        J_{kk} &=& a_k^2\dint{-\pi}{\pi}{\left\{\frac{\cos 2kx + 1}{2}\right\}}
+        - b_k^2\dint{-\pi}{\pi}{\left\{\frac{\cos 2kx - 1}{2}\right\}}\\
+        && + a_kb_k\dint{-\pi}{\pi}{\left\{\frac{\sin 2kx}{2}\right\}} + b_ka_k\dint{-\pi}{\pi}{\left\{\frac{\sin 2kx}{2}\right\}}\\
+        &=& \frac{a_k^2}{2}\dint{-\pi}{\pi}{1} -\frac{b_k^2}{2}\dint{-\pi}{\pi}{-1} = \pi(a_k^2 + b_k^2)
+      \end{eqnarray*}
+      \item $k \neq l$の時、
+      \begin{eqnarray*}
+        J_{kl} &=& 0  
+      \end{eqnarray*}
+    \end{enumerate}
+    従って、
+    \begin{eqnarray*}
+      (左辺) &=& \frac{a_0^2}{2} + 0 + \frac{1}{\pi}\sum_{k = 1}^{\infty}\pi(a_k^2 + b_k^2)\\
+      &=& \frac{a_0^2}{2} + \sum_{k = 1}^{\infty}(a_k^2 + b_k^2) = (右辺)
+    \end{eqnarray*}
+    よって示された。
+  \end{enumerate}
+  \item 
+  \begin{enumerate}[(a)]
+    \item フーリエ変換すると
+    \begin{eqnarray*}
+      G(\omega) &=& \dint[t]{-\infty}{\infty}{g(t)e^{-i\omega t}}\\
+      &=& \sum_{k = -\infty}^{\infty}\dint[t]{-\infty}{\infty}{\delta(t - kT)e^{-i\omega t}}\\
+      &=& \sum_{k = -\infty}^{\infty}e^{-i\omega kT}\\
+      &=& 2\pi\sum_{k = -\infty}^{\infty}\delta(-T\omega - 2\pi k)\\
+      &=& \frac{2\pi}{T}\sum_{k = -\infty}^{\infty}\delta\left(\omega - \frac{-2\pi k}{T}\right)\\
+      &&\therefore \Omega = -\frac{2\pi}{T}
+    \end{eqnarray*}
+    \item 与式より
+    \begin{eqnarray*}
+      X_g(\omega) &=& \frac{1}{2\pi}\dint[\omega']{-\infty}{\infty}{X(\omega - \omega')G(\omega')}\\
+      &=& \frac{2\pi}{2T\pi}\sum_{k = -\infty}^{\infty}\dint[\omega']{-\infty}{\infty}{X(\omega - \omega')\delta(\omega' - k\Omega)}\\
+      &=& \frac{1}{T}\sum_{k = -\infty}^{\infty}X(\omega - k\Omega)\\
+      &=& \frac{1}{T}\sum_{k = -\infty}^{\infty}X\left(\omega + \frac{2\pi k}{T}\right)\\
+    \end{eqnarray*}
+    \item $X_g(\omega)$の概形は以下のようになる。
+    \begin{figure}[htbp]
+      \centering
+      \begin{tikzpicture}[>=stealth]
+        \coordinate (O) at (0, 4.7) node at (O) [below] {$0$};
+        \coordinate (A) at ($(O) + (-6, 0)$);
+        \coordinate (B) at ($(O) + (1.8, 0)$) node at (B) [below] {$\pi/T$};
+        \coordinate (C) at ($(O)!1!180:(B)$) node at (C) [below] {$-\pi/T$};
+        \coordinate (D) at ($(O)!2!(B)$) node at (D) [below] {$2\pi/T$};
+        \coordinate (E) at ($(O)!2!(C)$) node at (E) [below] {$-2\pi/T$};
+        \draw [->] (A) -- (O) --++(0:6) node [right] {$\omega$};
+        \draw [->] (O) --++(90:6) node [above] {$X(\omega)$};
+        \draw (B) --++(90:0.2);
+        \draw (C) --++(90:0.2);
+        \draw (D) --++(90:0.2);
+        \draw (E) --++(90:0.2);
+        % \norm{0}{3}{40}{domain=-2:2}{0}
+        \norm{3.6}{3}{2}{black}{40}
+        \norm{-3.6}{3}{2}{black}{40}
+        \norm{0}{3}{2}{black}{40}
+      \end{tikzpicture}
+    \end{figure}
+    後はわからん
+  \end{enumerate}
+\end{enumerate}
+\newpage
+\section{}
+\subsection{問題文}
+\newpage
+\subsection{解答}
+\begin{enumerate}[(1)]
+  \item 
+  \begin{eqnarray*}
+    (左辺)
+    &=& 
+    \overline{\overline{x\cdot (\overline{x}\vee\overline{y})}\cdot\overline{y\cdot (\overline{x}\vee \overline{y})}}\\
+    &=& 
+    \overline{\overline{x\cdot\overline{y}}\cdot\overline{y\cdot\overline{x}}}\\
+    &=& 
+    \overline{(\overline{x}\vee y)\cdot(\overline{y}\vee x)}\\
+    &=& 
+    \overline{\overline{x}\cdot\overline{y}\vee x\cdot y}\\
+    &=& 
+    (x\vee y)\cdot(\overline{x}\vee\overline{y})\\
+    &=& 
+    x\cdot\overline{y}\vee y\cdot \overline{x}\\
+    &=&(右辺)
+  \end{eqnarray*}
+  よって題意は示された。
+  \item notに関して以下が成り立つ。
+  \begin{eqnarray*}
+     \overline{x} = \overline{x\cdot x}
+  \end{eqnarray*}
+  よって、notゲートは次のようになる。
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=stealth, circuit logic US]
+      \draw (0, 0) node [nand gate] (nand1) {};
+      \coordinate (x) at ($(nand1.input 1) + (-1, 0)$);
+      \coordinate (y) at ($(x) + (0.5, 0)$);
+      \draw (nand1.input 1) -- (x) node [left] {$x$};
+      \draw (nand1.input 2) -| (y) node [branch] {};
+      \draw (nand1.output) --++(0:0.5) node [right] {$z$};
+    \end{tikzpicture}
+  \end{figure}
+  orに関して以下が成り立つ。
+  \begin{eqnarray*}
+     x\vee y = \overline{\overline{x\vee y}} = \overline{\overline{x}\cdot \overline{y}}
+  \end{eqnarray*}
+  よって、orゲートは次のようになる。
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=stealth, circuit logic US]
+      \draw (0, 0) node [nand gate] (nand1) {};
+      \draw (0, -1) node [nand gate] (nand2) {};
+      \draw ($(nand1.output)!0.5!(nand2.output) + (1, 0)$) node [nand gate] (nand3) {};
+      \coordinate (x) at ($(nand1.input 1) + (-1, 0)$);
+      \coordinate (x') at ($(x) + (0.5, 0)$);
+      \draw (nand1.input 1) -- (x) node [left] {$x$};
+      \draw (nand1.input 2) -| (x') node [branch] {};
+      \coordinate (y) at ($(nand2.input 1) + (-1, 0)$);
+      \coordinate (y') at ($(y) + (0.5, 0)$);
+      \draw (nand2.input 1) -- (y) node [left] {$y$};
+      \draw (nand2.input 2) -| (y') node [branch] {};
+      \draw (nand1.output) --++(0:0.3) |- (nand3.input 1);
+      \draw (nand2.output) --++(0:0.3) |- (nand3.input 2);
+      \draw (nand3.output) --++(0:0.5) node [right] {$z$};
+    \end{tikzpicture}
+  \end{figure}
+  andに関して以下が成り立つ。
+  \begin{eqnarray*}
+     x\cdot y = \overline{\overline{x\cdot y}}
+  \end{eqnarray*}
+  andゲートは次のようになる。
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=stealth, circuit logic US]
+      \draw (0, 0) node [nand gate] (nand1) {};
+      \draw ($(nand1.output) + (2, -0.5)$) node [nand gate] (nand2) {};
+      \coordinate (x) at ($(nand1.input 1) + (-1, 0)$);
+      \coordinate (y) at ($(nand1.input 2) + (-1, 0)$);
+      \coordinate (y') at ($(nand2.input 1) + (-0.8, 0)$);
+      \draw (nand1.input 1) -- (x) node [left] {$x$};
+      \draw (nand1.input 2) -- (y) node [left] {$y$};
+      \draw (nand1.output) --++(0:0.3) |- (nand2.input 1);
+      \draw (nand2.input 2) -| (y') node [branch] {};
+      \draw (nand2.output) --++(0:0.5) node [right] {$z$};
+    \end{tikzpicture}
+  \end{figure}
+  xorに関して以下が成り立つ。
+  \begin{eqnarray*}
+     (x\cdot \overline{y})\vee (y\cdot \overline{x}) 
+     &=& (x\cdot \overline{x})\vee (x\cdot \overline{y}) \vee 
+     (\overline{x}\cdot y) \vee (y\cdot \overline{y})
+     = (x\cdot(\overline{x}\vee\overline{y}))\vee(y\cdot(\overline{x}\vee\overline{y}))
+     = (x\cdot\overline{x\cdot y})\vee(y\cdot\overline{x\cdot y})\\
+     &=& \overline{\overline{(x\cdot\overline{x\cdot y})\vee(y\cdot\overline{x\cdot y})}}
+     = \overline{\overline{(x\cdot\overline{x\cdot y})}\cdot\overline{(y\cdot\overline{x\cdot y})}}
+  \end{eqnarray*}
+  よって、xorゲートは次のようになる。
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[>=stealth, circuit logic US]
+      \draw (0, 0) node [nand gate] (nand1) {};
+      \draw ($(nand1.output) + (1.5, 0.5)$) node [nand gate] (nand2) {};
+      \draw ($(nand1.output -| nand2)!1!180:(nand2)$) node [nand gate] (nand3) {};
+      \draw ($(nand1 -| nand2)!1!180:(nand1)$) node [nand gate] (nand4) {};
+      \coordinate (x) at ($(nand1.input 1) + (-1, 0)$);
+      \coordinate (y) at ($(nand1.input 2) + (-1, 0)$);
+      \draw (nand1.input 1) -- (x) node [left] {$x$};
+      \draw (nand1.input 2) -- (y) node [left] {$y$};
+      \draw (nand2.input 1) -| ($(x) + (0.5, 0)$) node [branch] {};
+      \draw (nand2.input 2) -| ($(nand1.output) + (0.3, 0)$) node [branch] {} -- (nand1.output);
+      \draw (nand3.input 2) -| ($(y) + (0.5, 0)$) node [branch] {};
+      \draw (nand3.input 1) -| ($(nand1.output) + (0.3, 0)$) node [branch] {} -- (nand1.output);
+      \draw (nand2.output) --++(0:0.3) |- (nand4.input 1);
+      \draw (nand3.output) --++(0:0.3) |- (nand4.input 2);
+      \draw (nand4.output) --++(0:0.5) node [right] {$z$};
+    \end{tikzpicture}
+  \end{figure}
+  \item 
+  \begin{enumerate}[(a)]
+    \item クロックサイクルと出力$z$の波形は以下のようになる。
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}[>=stealth]
+        \coordinate (O) at (0, 0);
+        %%%==================================================
+        %%破線の列
+        \newcount\x
+        \x = 0
+        \foreach \t in {1, 2, ..., 13}
+        {
+          \advance\x\t
+          \advance\x-1
+          \multiply\x1
+          \draw ($(O) + (\x, 0.5)$) --++(0:0.5) --++(-90:0.5);
+          \ifnum \t < 13
+          {
+            \node at ($(O) + (\x + 0.5, 0.8)$) {$C_{\t}$};
+            \draw ($(O) + (\x + 0.5, 0)$) --++(0:0.5);
+          }\fi
+          \draw [dotted] ($(O) + (\x, 1)$) --++(-90:3);
+          \draw [->] ($(O) + (\x, 0)$) --++(90:0.5);
+        }
+        %%%==================================================
+        \coordinate (c) at ($(O) + (-0.5, 0)$) node at (c) [left] {clock};
+        \draw (c) -- (O);
+        \coordinate (z) at ($(c) + (0, -1.2)$) node at (z) [left] {z};
+        \draw (z) --++(0:0.5);
+        \draw (z)++(0:0.5) --++(0:1) --++(90:0.5) --++(0:2) --++(-90:0.5)%
+         --++(0:2) --++(90:0.5) --++(0:1) --++(-90:0.5) --++(0:2) --++(90:0.5)%
+         --++(0:2) --++(-90:0.5) --++(0:2.5);
+      \end{tikzpicture}
+    \end{figure}
+    \item この送信回路は送信データに1ビット誤り検出用に検査符号を加えたデータを作り、送信するようになっている。
+    検査符号は送信データと検査符号を合わせたデータの中で1の数が偶数になるように計算されているため、
+    受信した時にデータの中の1の数が偶数にならなければ誤りがあることが分かるようになっているという仕組み。
+  \end{enumerate}
+  \item 
+  \begin{enumerate}[(a)]
+    \item way-1の状態は以下のようになる。 
+    \begin{table}[H]
+      \centering
+      \begin{tabular}{cccccc}
+        $index$ & $v$ & $tag$ & $lru$ & $data1$ & $data2$\\
+        \cline{2-6}
+        0 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+        \cline{2-6}
+        1 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{(26)} & \multicolumn{1}{|c|}{(27)}\\
+        \cline{2-6}
+        2 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{7} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{(30)} & \multicolumn{1}{|c|}{(31)}\\
+        \cline{2-6}
+        3 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+        \cline{2-6}
+        &\multicolumn{5}{c}{$way$-$1$}
+      \end{tabular}
+    \end{table}
+    \item 以下のようになる。
+    \begin{table}[H]
+      \centering
+      \begin{tabular}{cc}
+        \begin{tabular}{c|c}
+          \hline
+          61 & ヒット\\
+          19 & ミス\\
+          50 & ヒット\\
+          \hline
+        \end{tabular}
+        \begin{tabular}{cccccc}
+          $index$ & $v$ & $tag$ & $lru$ & $data1$ & $data2$\\
+          \cline{2-6}
+          0 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          1 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{6} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{(50)} & \multicolumn{1}{|c|}{(51)}\\
+          \cline{2-6}
+          2 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          3 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          &\multicolumn{5}{c}{$way$-$2$}
+        \end{tabular}
+      \end{tabular}
+    \end{table}
+    \item 以下のようになる。
+    \begin{table}[H]
+      \centering
+      \begin{tabular}{c|c}
+        \hline
+        18 & ヒット\\
+        42 & ミス\\
+        43 & ヒット\\
+        12 & ミス\\
+        \hline
+      \end{tabular}
+    \end{table}
+    \begin{table}[H]
+      \centering
+      \scalebox{0.85}{%
+      \begin{tabular}{ccc}
+        \begin{tabular}{cccccc}
+          $index$ & $v$ & $tag$ & $lru$ & $data1$ & $data2$\\
+          \cline{2-6}
+          0 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          1 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{5} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{(42)} & \multicolumn{1}{|c|}{(43)}\\
+          \cline{2-6}
+          2 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{7} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{(30)} & \multicolumn{1}{|c|}{(31)}\\
+          \cline{2-6}
+          3 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          &\multicolumn{5}{c}{$way$-$1$}
+        \end{tabular}
+        & 
+        \begin{tabular}{cccccc}
+          $index$ & $v$ & $tag$ & $lru$ & $data1$ & $data2$\\
+          \cline{2-6}
+          0 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          1 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{6} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{(50)} & \multicolumn{1}{|c|}{(51)}\\
+          \cline{2-6}
+          2 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{(12)} & \multicolumn{1}{|c|}{(13)}\\
+          \cline{2-6}
+          3 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          &\multicolumn{5}{c}{$way$-$2$}
+        \end{tabular}
+        & 
+        \begin{tabular}{cccccc}
+          $index$ & $v$ & $tag$ & $lru$ & $data1$ & $data2$\\
+          \cline{2-6}
+          0 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          1 & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{2} & \multicolumn{1}{|c|}{(18)} & \multicolumn{1}{|c|}{(19)}\\
+          \cline{2-6}
+          2 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{1} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          3 & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{3} & \multicolumn{1}{|c|}{0} & \multicolumn{1}{|c|}{0}\\
+          \cline{2-6}
+          &\multicolumn{5}{c}{$way$-$3$}
+        \end{tabular}
+      \end{tabular}%
+      }
+    \end{table}
+  \end{enumerate}
+\end{enumerate}
+\index{ティック@tikz}
+% \printindex
+\end{document}
